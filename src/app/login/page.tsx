@@ -69,19 +69,90 @@ export default function LoginPage() {
                     alignItems: "center",
                     justifyContent: "center",
                     borderRadius: '30px',
-                    backgroundColor: 'rgba(0, 85, 135, 0.8)',
+                    backgroundColor: 'rgba(0, 126, 200, 0.8)',
                     backdropFilter: 'blur(8px)',
-                    boxShadow: '-10px 10px 30px #002236',
+                    boxShadow: '-5px 5px 20px #003e64',
                 }}>
                     <div
                         style={{
+                            margin: '5%',
                             display: 'row',
+                            width: '100%',
+                            color: 'white',
                         }}
                     >
-                        <Typography variant="h1" style={{marginBottom: '6vh'}}>Sign Up</Typography>
-                        <TextField
-                            label="Login"
-                            id="fullWidth"
+                        <Typography variant="h2" style={{marginBottom: '10%'}}>SIGN UP</Typography>
+                        <Typography variant="h6" style={{marginBottom: '1%'}}>Email</Typography>
+                        <TextField //TODO: Adicionar configuração como variante depois
+                            label="Seu melhor email"
+                            sx={{
+                                width: '100%',
+                                marginBottom: '3%',
+                                color: 'secundary',
+                                input: {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input': {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input::placeholder': {
+                                color: 'white',
+                                opacity: 1,
+                                },
+                                '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                },
+                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                                    color: 'white'
+                                },
+                                '.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+                                    color: 'white !important'
+                                }
+                            }}
+                        />
+                        <Typography variant="h6" style={{marginBottom: '1%'}}>Senha</Typography>
+                        <TextField //TODO: Adicionar configuração como variante depois
+                            label="Sua melhor Senha"
+                            sx={{
+                                width: '100%',
+                                marginBottom: '3%',
+                                color: 'secundary',
+                                input: {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input': {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input::placeholder': {
+                                color: 'white',
+                                opacity: 1,
+                                },
+                                '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                },
+                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                                    color: 'white'
+                                },
+                                '.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+                                    color: 'white !important'
+                                }
+                            }}
                         />
                     </div>                
             </Paper>

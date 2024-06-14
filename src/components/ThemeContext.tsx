@@ -24,7 +24,16 @@ const theme = createTheme({
                     }
                 }
             `,
-        }
+        },
+        MuiOutlinedInput: {
+          styleOverrides: {
+            root: {
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "white",
+              },
+            },
+          },
+     },
     }
 });
 
