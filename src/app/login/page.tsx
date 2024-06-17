@@ -1,6 +1,7 @@
 "use client"
 import { useThemeContext } from "@/components/ThemeContext";
 import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled } from "@mui/material";
+import { AccountCircle as MuiPersonsCircleIcon } from '@mui/icons-material';
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -8,14 +9,6 @@ const ImgIcon = styled("img")(() => ({
 
 export default function LoginPage() {
     const appTheme = useThemeContext();
-    
-    const BoxBottom = styled(Box)(() => ({
-        backgroundColor: `${appTheme.palette.background.default}`,
-        borderRadius: "12px 12px 12px 12px",
-        padding: 20,
-        display: "flex",
-        justifyContent: "center",
-    }));
 
     return (
         <Grid
@@ -77,7 +70,7 @@ export default function LoginPage() {
                     alignItems: "center",
                     justifyContent: "center",
                     borderRadius: '30px',
-                    backgroundColor: 'rgba(0, 126, 200, 0.8)',
+                    background: 'linear-gradient(45deg, rgba(2,0,36,0.4) 0%, rgba(0,126,200,0.4) 48%, rgba(0,212,255,0.4) 100%)',
                     backdropFilter: 'blur(8px)',
                     boxShadow: '-5px 5px 20px #003e64',
                 }}>
@@ -89,14 +82,16 @@ export default function LoginPage() {
                             color: 'white',
                         }}
                     >
-                        <Typography variant="h2" style={{marginBottom: '10%'}}>SIGN UP</Typography>
+                        
+                        <Typography variant="h2" style={{marginBottom: '5%'}}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '300%', marginBottom: '1%' }}/>SIGN UP</Typography>
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Email</Typography>
                         <TextField //TODO: Adicionar configuração como variante depois
-                            label="Seu melhor email"
+                            label="Your best email"
                             sx={{
                                 width: '100%',
                                 marginBottom: '3%',
-                                color: 'secundary',
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                borderRadius: '8px',
                                 input: {
                                     color: 'white',
                                 },
@@ -108,31 +103,23 @@ export default function LoginPage() {
                                 opacity: 1,
                                 },
                                 '& .MuiOutlinedInput-root': {
-                                '& fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: 'white',
+                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
+                                        borderColor: 'rgba(255,255,255,0.2)',
                                     },
                                 },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
                                     color: 'white'
                                 },
-                                '.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white !important'
-                                }
                             }}
                         />
-                        <Typography variant="h6" style={{marginBottom: '1%'}}>Senha</Typography>
+                        <Typography variant="h6" style={{marginBottom: '1%'}}>Password</Typography>
                         <TextField //TODO: Adicionar configuração como variante depois
-                            label="Sua melhor Senha"
+                            label="That better password"
                             sx={{
                                 width: '100%',
                                 marginBottom: '3%',
-                                color: 'secundary',
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                borderRadius: '8px',
                                 input: {
                                     color: 'white',
                                 },
@@ -144,31 +131,32 @@ export default function LoginPage() {
                                 opacity: 1,
                                 },
                                 '& .MuiOutlinedInput-root': {
-                                '& fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: 'white',
+                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
+                                        borderColor: 'rgba(255,255,255,0.2)',
                                     },
                                 },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
                                     color: 'white'
                                 },
-                                '.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white !important'
-                                }
                             }}
                         />
-                        <BoxBottom>
-                            <Button
-                                onClick={() => alert('LOGADOOOOOO')}
-                            >
-                                Entrar
-                            </Button>
-                        </BoxBottom>
+                        <Button
+                            sx={{
+                                width: '100%',
+                                height: '6vh',
+                                fontSize: '180%',
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                border: '1px solid rgba(255,255,255,0.2)',
+                                borderRadius: '8px',
+                                color: 'white',
+                                ':hover': {
+                                    background: 'linear-gradient(45deg, rgba(18,34,0,0.7) 0%, rgba(6,200,0,0.7) 48%, rgba(0,50,29,0.7) 100%)',
+                                }
+                            }}
+                            onClick={() => alert('LOGADOOOOOO')}
+                        >
+                            Entrar
+                        </Button>
                     </div>                
             </Paper>
         </Grid>
