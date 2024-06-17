@@ -1,6 +1,6 @@
 "use client"
 import { useThemeContext } from "@/components/ThemeContext";
-import { CssBaseline, Grid, Icon, Paper, TextField, Typography, styled } from "@mui/material";
+import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled } from "@mui/material";
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -9,6 +9,14 @@ const ImgIcon = styled("img")(() => ({
 export default function LoginPage() {
     const appTheme = useThemeContext();
     
+    const BoxBottom = styled(Box)(() => ({
+        backgroundColor: `${appTheme.palette.background.default}`,
+        borderRadius: "12px 12px 12px 12px",
+        padding: 20,
+        display: "flex",
+        justifyContent: "center",
+    }));
+
     return (
         <Grid
             container
@@ -154,6 +162,13 @@ export default function LoginPage() {
                                 }
                             }}
                         />
+                        <BoxBottom>
+                            <Button
+                                onClick={() => alert('LOGADOOOOOO')}
+                            >
+                                Entrar
+                            </Button>
+                        </BoxBottom>
                     </div>                
             </Paper>
         </Grid>
