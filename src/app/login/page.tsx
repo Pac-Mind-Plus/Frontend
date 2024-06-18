@@ -7,6 +7,7 @@ import {
     VisibilityTwoTone as VisibilityTwoToneIcon,
 } from '@mui/icons-material';
 import { useState } from "react";
+import PasswordInputComp from "@/components/shared/PasswordInput";
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -124,6 +125,33 @@ export default function LoginPage() {
                             }}
                         />
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Password</Typography>
+                        <PasswordInputComp
+                            label="That Better Passwored"
+                            style={{
+                                width: '100%',
+                                marginBottom: '3%',
+                                backgroundColor: 'rgba(0,0,0,0.7)',
+                                borderRadius: '8px',
+                                input: {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input': {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input::placeholder': {
+                                color: 'white',
+                                opacity: 1,
+                                },
+                                '& .MuiOutlinedInput-root': {
+                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
+                                        borderColor: 'rgba(255,255,255,0.2)',
+                                    },
+                                },
+                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+                                    color: 'white'
+                                },
+                            }}
+                        />
                         <TextField //TODO: Adicionar configuração como variante depois
                             label="That better password"
                             type={showText ? "" : "password"}
