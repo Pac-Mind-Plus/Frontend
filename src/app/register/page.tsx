@@ -2,6 +2,7 @@
 import { useThemeContext } from "@/components/ThemeContext";
 import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled } from "@mui/material";
 import { AccountCircle as MuiPersonsCircleIcon } from '@mui/icons-material';
+import { useRouter } from "next/navigation";
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -9,6 +10,7 @@ const ImgIcon = styled("img")(() => ({
 
 export default function LoginPage() {
     const appTheme = useThemeContext();
+    const router = useRouter();
 
     return (
         <Grid
@@ -21,44 +23,6 @@ export default function LoginPage() {
             }}
         >
             <CssBaseline />
-                <Grid
-                    xs={12}
-                    sm={8}
-                    md={5}
-                    component={'div'}
-                >
-                <Icon
-                    sx={{
-                        fontSize: 300,
-                        textAlign: "center",
-                        width: '40vw',
-                        display: "flex",
-                        justifyContent: "center",
-                    }}
-                >
-                    <ImgIcon
-                        alt="MIND PLUS"
-                        src={"/mind-plus-logo-log.png"}
-                        sx={{
-                            marginBottom: appTheme.spacing(0.5),
-                        }}
-                    />
-                </Icon>
-            </Grid>
-            <Grid
-                item
-                xs={false}
-                sm={6}
-                md={7}
-                sx={{
-                    display: "relative",
-                    backgroundImage: "url(login-page-background.jpg)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    height: '100vh',
-                }}
-            />
             <Paper
                 sx={{
                     position: 'absolute',
@@ -140,32 +104,118 @@ export default function LoginPage() {
                                     color: 'white'
                                 },
                             }}
-                        />
-                        <Button
+                        /> 
+                        <Typography variant="h6" style={{marginBottom: '1%'}}>Repeat assword</Typography>
+                        <TextField //TODO: Adicionar configuração como variante depois
+                            label="That better password again"
+                            type="password"
                             sx={{
                                 width: '100%',
-                                height: '6vh',
-                                fontSize: '180%',
+                                marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
-                                border: '1px solid rgba(255,255,255,0.2)',
                                 borderRadius: '8px',
+                                input: {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input': {
+                                    color: 'white',
+                                },
+                                '& .MuiInputBase-input::placeholder': {
                                 color: 'white',
-                                ':hover': {
-                                    background: 'linear-gradient(45deg, rgba(18,34,0,0.7) 0%, rgba(6,200,0,0.7) 48%, rgba(0,50,29,0.7) 100%)',
-                                }
+                                opacity: 1,
+                                },
+                                '& .MuiOutlinedInput-root': {
+                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
+                                        borderColor: 'rgba(255,255,255,0.2)',
+                                    },
+                                },
+                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+                                    color: 'white'
+                                },
                             }}
-                            onClick={() => alert('LOGADOOOOOO')}
-                        >
-                            Entrar
-                        </Button>
-                        <Typography
+                        /> 
+                        <Box
                             sx={{
-                                marginTop: '3%',
-                                fontSize: 'bold'
+                                width: '100%',
+                                
                             }}
-                        ><a href="/register">I Don't have an account</a></Typography>
+                        >
+                            <Button
+                                sx={{
+                                    width: '100%',
+                                    height: '6vh',
+                                    fontSize: '180%',
+                                    backgroundColor: 'rgba(0,0,0,0.7)',
+                                    border: '1px solid rgba(255,255,255,0.2)',
+                                    borderRadius: '8px',
+                                    color: 'white',
+                                    ':hover': {
+                                        background: 'linear-gradient(45deg, rgba(18,34,0,0.7) 0%, rgba(6,200,0,0.7) 48%, rgba(0,50,29,0.7) 100%)',
+                                    }
+                                }}
+                                onClick={() => alert('LOGADOOOOOO')}
+                            >
+                                Register
+                            </Button>
+                            <Button
+                                sx={{
+                                    width: '100%',
+                                    height: '6vh',
+                                    fontSize: '180%',
+                                    backgroundColor: 'rgba(255,255,255,0.9)',
+                                    border: '1px solid rgba(0,0,0,0.2)',
+                                    borderRadius: '8px',
+                                    marginTop: '5%',
+                                    color: 'black',
+                                    ':hover': {
+                                        background: 'linear-gradient(45deg, rgba(127,127,127,0.7) 0%, rgba(255,255,255,0.7) 50%, rgba(127,127,127,0.7) 100%)',
+                                    }
+                                }}
+                                onClick={() => router.replace('/login')}
+                            >
+                                Log In
+                            </Button>
+                        </Box>
                     </div>                
             </Paper>
+            <Grid
+                xs={12}
+                sm={8}
+                md={5}
+                component={'div'}
+            >
+                <Icon
+                    sx={{
+                        fontSize: 300,
+                        textAlign: "center",
+                        width: '40vw',
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
+                    <ImgIcon
+                        alt="MIND PLUS"
+                        src={"/mind-plus-logo-log.png"}
+                        sx={{
+                            marginBottom: appTheme.spacing(0.5),
+                        }}
+                    />
+                </Icon>
+            </Grid>
+            <Grid
+                item
+                xs={false}
+                sm={6}
+                md={7}
+                sx={{
+                    display: "relative",
+                    backgroundImage: "url(login-page-background.jpg)",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: '100vh',
+                }}
+            />
         </Grid>
     )
 }
