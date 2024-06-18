@@ -1,7 +1,12 @@
 "use client"
 import { useThemeContext } from "@/components/ThemeContext";
-import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled } from "@mui/material";
-import { AccountCircle as MuiPersonsCircleIcon } from '@mui/icons-material';
+import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled, IconButton, InputAdornment, Tooltip } from "@mui/material";
+import {
+    AccountCircle as MuiPersonsCircleIcon,
+    VisibilityOffTwoTone as VisibilityOffTwoToneIcon,
+    VisibilityTwoTone as VisibilityTwoToneIcon,
+} from '@mui/icons-material';
+import { useState } from "react";
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -9,6 +14,12 @@ const ImgIcon = styled("img")(() => ({
 
 export default function LoginPage() {
     const appTheme = useThemeContext();
+
+    const [showText, setShowText] = useState(false);
+
+    const changeShowTextHandler = () => {
+        setShowText((prevShow) => !prevShow);
+    };
 
     return (
         <Grid
@@ -115,7 +126,7 @@ export default function LoginPage() {
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Password</Typography>
                         <TextField //TODO: Adicionar configuração como variante depois
                             label="That better password"
-                            type="password"
+                            type={showText ? "" : "password"}
                             sx={{
                                 width: '100%',
                                 marginBottom: '3%',
@@ -139,6 +150,35 @@ export default function LoginPage() {
                                 '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
                                     color: 'white'
                                 },
+                            }}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                            <Tooltip title={showText ? "Hide" : "Show"}>
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    edge="end"
+                                                    onClick={changeShowTextHandler}
+                                                >
+                                                    {showText ? (
+                                                        <VisibilityOffTwoToneIcon
+                                                            sx={{
+                                                                color: 'white',
+                                                                height: "20px",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <VisibilityTwoToneIcon
+                                                            sx={{
+                                                                color: 'white',
+                                                                height: "20px",
+                                                            }}
+                                                        />
+                                                    )}
+                                                </IconButton>
+                                            </Tooltip>
+                                    </InputAdornment>
+                                ),
                             }}
                         />
                         <Button
