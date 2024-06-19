@@ -47,7 +47,7 @@ export default function LoginPage() {
                         }}
                     >
                         
-                        <Typography variant="h2" style={{marginBottom: '5%'}}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '300%', marginBottom: '1%' }}/>SIGN UP</Typography>
+                        <Typography variant="h2" style={{marginBottom: '5%'}}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '300%', marginBottom: '1%' }}/>REGISTER</Typography>
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Email</Typography>
                         <TextField //TODO: Adicionar configuração como variante depois
                             label="Your best email"
