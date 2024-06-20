@@ -13,14 +13,8 @@ const ImgIcon = styled("img")(() => ({
     height: "100%",
 }));
 
-export default function LoginPage() {
+export default function LoginPage() { //TODO: Colocar os componentes em comum em um leyout para aplicar o efeito de animate
     const appTheme = useThemeContext();
-
-    const [showText, setShowText] = useState(false);
-
-    const changeShowTextHandler = () => {
-        setShowText((prevShow) => !prevShow);
-    };
 
     return (
         <Grid

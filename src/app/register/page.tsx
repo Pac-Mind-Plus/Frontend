@@ -3,6 +3,7 @@ import { useThemeContext } from "@/components/ThemeContext";
 import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled } from "@mui/material";
 import { AccountCircle as MuiPersonsCircleIcon } from '@mui/icons-material';
 import { useRouter } from "next/navigation";
+import PasswordInputComp from "@/components/shared/PasswordInput";
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -23,10 +24,23 @@ export default function LoginPage() {
             }}
         >
             <CssBaseline />
+            <Grid
+                item
+                xs={false}
+                sm={6}
+                md={7}
+                sx={{
+                    display: "relative",
+                    backgroundImage: "url(login-page-background.jpg)",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: '100vh',
+                }}
+            />
             <Paper
                 sx={{
                     position: 'absolute',
-                    left: '41.67%',
                     margin: '0 0 0 8vw',
                     height: '90vh',
                     width: '45vw',
@@ -77,10 +91,9 @@ export default function LoginPage() {
                             }}
                         />
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Password</Typography>
-                        <TextField //TODO: Adicionar configuração como variante depois
-                            label="That better password"
-                            type="password"
-                            sx={{
+                        <PasswordInputComp
+                            label="That Better Password"
+                            style={{
                                 width: '100%',
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
@@ -106,10 +119,9 @@ export default function LoginPage() {
                             }}
                         /> 
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Repeat assword</Typography>
-                        <TextField //TODO: Adicionar configuração como variante depois
-                            label="That better password again"
-                            type="password"
-                            sx={{
+                        <PasswordInputComp
+                            label="That Better Password"
+                            style={{
                                 width: '100%',
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
@@ -133,7 +145,7 @@ export default function LoginPage() {
                                     color: 'white'
                                 },
                             }}
-                        /> 
+                        />
                         <Box
                             sx={{
                                 width: '100%',
@@ -202,20 +214,7 @@ export default function LoginPage() {
                     />
                 </Icon>
             </Grid>
-            <Grid
-                item
-                xs={false}
-                sm={6}
-                md={7}
-                sx={{
-                    display: "relative",
-                    backgroundImage: "url(login-page-background.jpg)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    height: '100vh',
-                }}
-            />
+            
         </Grid>
     )
 }
