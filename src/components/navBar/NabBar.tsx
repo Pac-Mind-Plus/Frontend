@@ -26,7 +26,7 @@ import CustomLink from "../shared/navigation/CustomLink";
 import { useRouter } from "next/navigation";
 
 const ImgIcon = styled("img")(() => ({
-    height: "100%",
+    height: "95%",
 }));
 
 const DivFlexGrow = styled("div")(() => ({
@@ -87,6 +87,8 @@ function NavBar() {
             <AppBar
                 position="fixed"
                 sx={{
+                    backgroundColor: "#5c6bc0",
+                    
                     zIndex: appTheme.zIndex.drawer + 1,
                     transition: appTheme.transitions.create(
                         ["width", "margin"],
@@ -111,7 +113,7 @@ function NavBar() {
                                 cursor: "pointer",
                             }}
                         >
-                            <ImgIcon alt="Mind Plus" src="/logo.png" />
+                            <ImgIcon alt="Mind Plus" src="/mind-plus-icon.png" />
                         </Icon>
                     </Tooltip>
                     <Tooltip title="Home">
@@ -122,7 +124,6 @@ function NavBar() {
                                 sx={{
                                     cursor: "pointer",
                                     textDecoration: "none",
-                                    color: "green",
                                 }}
                             >
                                 MIND PLUS
@@ -146,7 +147,7 @@ function NavBar() {
                                 }}
                                 id="hello_page"
                             >
-                                Hello,{" "}
+                                Hello, {"Otavio Murilo Rau"}
                                 {/* {!!mounted &&
                                     contextManager.getDisplayName()} */}
                             </Typography>
@@ -209,7 +210,7 @@ function NavBar() {
                     <Tooltip title="Help">
                         <IconButton
                             color="inherit"
-                            href="https://eaportal.weg.net/?acr=3&doc=/dti/agd/developers-portal/documentation/home"
+                            href=""
                             target="_blank"
                         >
                             <HelpTwoToneIcon />

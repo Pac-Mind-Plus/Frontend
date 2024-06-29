@@ -6,7 +6,6 @@ import {
     VisibilityOffTwoTone as VisibilityOffTwoToneIcon,
     VisibilityTwoTone as VisibilityTwoToneIcon,
 } from '@mui/icons-material';
-import { useState } from "react";
 import PasswordInputComp from "@/components/shared/PasswordInput";
 
 const ImgIcon = styled("img")(() => ({
