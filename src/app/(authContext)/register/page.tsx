@@ -70,80 +70,26 @@ export default function LoginPage() {
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                                 borderRadius: '8px',
-                                input: {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input::placeholder': {
-                                color: 'white',
-                                opacity: 1,
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
-                                        borderColor: 'rgba(255,255,255,0.2)',
-                                    },
-                                },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white'
-                                },
                             }}
                         />
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Password</Typography>
                         <PasswordInputComp
-                            label="That Better Password"
+                            label="That better password"
                             style={{
                                 width: '100%',
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                                 borderRadius: '8px',
-                                input: {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input::placeholder': {
-                                color: 'white',
-                                opacity: 1,
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
-                                        borderColor: 'rgba(255,255,255,0.2)',
-                                    },
-                                },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white'
-                                },
                             }}
                         /> 
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Repeat assword</Typography>
                         <PasswordInputComp
-                            label="That Better Password"
+                            label="Repeat that better password"
                             style={{
                                 width: '100%',
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                                 borderRadius: '8px',
-                                input: {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input::placeholder': {
-                                color: 'white',
-                                opacity: 1,
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
-                                        borderColor: 'rgba(255,255,255,0.2)',
-                                    },
-                                },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white'
-                                },
                             }}
                         />
                         <Box
@@ -169,24 +115,12 @@ export default function LoginPage() {
                             >
                                 Register
                             </Button>
-                            <Button
-                                sx={{
-                                    width: '100%',
-                                    height: '6vh',
-                                    fontSize: '180%',
-                                    backgroundColor: 'rgba(255,255,255,0.9)',
-                                    border: '1px solid rgba(0,0,0,0.2)',
-                                    borderRadius: '8px',
-                                    marginTop: '5%',
-                                    color: 'black',
-                                    ':hover': {
-                                        background: 'linear-gradient(45deg, rgba(127,127,127,0.7) 0%, rgba(255,255,255,0.7) 50%, rgba(127,127,127,0.7) 100%)',
-                                    }
-                                }}
-                                onClick={() => router.replace('/login')}
-                            >
-                                Log In
-                            </Button>
+                            <Typography
+                            sx={{
+                                marginTop: '3%',
+                                fontSize: 'bold',
+                            }}
+                        ><a href="/login">Login In</a></Typography>
                         </Box>
                     </div>                
             </Paper>

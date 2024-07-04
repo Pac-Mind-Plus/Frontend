@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 body {
-  color: rgb(0,255,255);
+  color: rgb(250,250,250);
   align-items: center;
   display: flex;
   font-family: "Victor Mono", monospace;

@@ -1,10 +1,8 @@
 "use client"
 import { useThemeContext } from "@/components/ThemeContext";
-import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled, IconButton, InputAdornment, Tooltip } from "@mui/material";
+import { Button, CssBaseline, Grid, Icon, Paper, TextField, Typography, styled } from "@mui/material";
 import {
     AccountCircle as MuiPersonsCircleIcon,
-    VisibilityOffTwoTone as VisibilityOffTwoToneIcon,
-    VisibilityTwoTone as VisibilityTwoToneIcon,
 } from '@mui/icons-material';
 import PasswordInputComp from "@/components/shared/PasswordInput";
 
@@ -92,29 +90,12 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Email</Typography>
                         <TextField //TODO: Adicionar configuração como variante depois
                             label="Your best email"
+                            type="outlined"
                             sx={{
                                 width: '100%',
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                                 borderRadius: '8px',
-                                input: {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input::placeholder': {
-                                color: 'white',
-                                opacity: 1,
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
-                                        borderColor: 'rgba(255,255,255,0.2)',
-                                    },
-                                },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white'
-                                },
                             }}
                         />
                         <Typography variant="h6" style={{marginBottom: '1%'}}>Password</Typography>
@@ -125,24 +106,6 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                                 marginBottom: '3%',
                                 backgroundColor: 'rgba(0,0,0,0.7)',
                                 borderRadius: '8px',
-                                input: {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputBase-input::placeholder': {
-                                color: 'white',
-                                opacity: 1,
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                '& fieldset, &:hover fieldset, &.Mui-focused fieldset': {
-                                        borderColor: 'rgba(255,255,255,0.2)',
-                                    },
-                                },
-                                '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root, .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-                                    color: 'white'
-                                },
                             }}
                         />
                         <Button
