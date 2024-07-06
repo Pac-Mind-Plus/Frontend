@@ -117,7 +117,7 @@ export default function Home() {
               alignItems: "center",
               margin: 2,
               borderRadius: "4px",
-              backgroundColor: "#00aba9",
+              backgroundColor: "rgba(0,126,200, 1)",
             }}
           >
             <Typography variant="h3" style={{marginBottom: "2%", marginTop: "2%"}}>Diary</Typography>
