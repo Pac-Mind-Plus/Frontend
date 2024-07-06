@@ -11,7 +11,7 @@ export default function Home() {
   const initialConfig: DayPilot.CalendarConfig = {
     viewType: "Day",
     startDate: DayPilot.Date.now(), 
-    locale: "en-us",
+    locale: "pt-br",
     headerHeight: 50,
   };
 
@@ -50,7 +50,7 @@ export default function Home() {
   };
 
   const onTimeRangeSelected = async (args: DayPilot.CalendarTimeRangeSelectedArgs) => {
-    const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+    const modal = await DayPilot.Modal.prompt("Create a new event:", "Event Name", {okText: "Add Registry"});
     calendar?.clearSelection();
     if (modal.canceled) {
         return;
@@ -131,7 +131,7 @@ export default function Home() {
                 {...config}
                 cellHeight={35}
                 contextMenu={contextMenu}
-                onTimeRangeSelected={() => onTimeRangeSelected}
+                onTimeRangeSelected={(onTimeSelected) => onTimeRangeSelected(onTimeSelected)}
                 onEventClick={() => alert("Data")}
                 heightSpec="Full"
               />

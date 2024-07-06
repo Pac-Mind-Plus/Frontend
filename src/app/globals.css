@@ -12,6 +12,47 @@ body {
   background-color: #141414;
 }
 
+.modal_default_main {
+  border: 1px solid white;
+  /* color: black; */
+  border-radius: 4px;
+}
+.modal_default_inner {
+  background-color: rgba(81, 81, 81, 1) !important;
+}
+.modal_default_content {
+  font-size: 2em;
+}
+.modal_default_input input {
+  border-radius: 4px;
+  padding: 4px;
+  color: black;
+}
+.modal_default_input input:focus {
+  outline: none;
+}
+button.modal_default_ok {
+  background-color: rgba(0,126,200, 1);
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 2em;
+}
+button.modal_default_ok:hover, button.modal_default_ok:focus {
+  background-color: white;
+  color: black;
+  outline: none;
+}
+button.modal_default_cancel {
+  background-color: #ff0000;
+  padding: 8px;
+  border-radius: 4px;
+}
+button.modal_default_cancel:hover, button.modal_default_cancel:focus {
+  background-color: white;
+  color: black;
+  outline: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
