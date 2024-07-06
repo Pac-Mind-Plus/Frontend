@@ -82,7 +82,7 @@ export default function LoginPage() {
                                 borderRadius: '8px',
                             }}
                         /> 
-                        <Typography variant="h6" style={{marginBottom: '1%'}}>Repeat assword</Typography>
+                        <Typography variant="h6" style={{marginBottom: '1%'}}>Repeat Password</Typography>
                         <PasswordInputComp
                             label="Repeat that better password"
                             style={{

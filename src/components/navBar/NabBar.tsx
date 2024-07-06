@@ -24,6 +24,7 @@ import {
 } from "@mui/icons-material";
 import CustomLink from "../shared/navigation/CustomLink";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/(authContext)/authContext";
 
 const ImgIcon = styled("img")(() => ({
     height: "95%",
@@ -35,7 +36,7 @@ const DivFlexGrow = styled("div")(() => ({
 
 function NavBar() {
     const router = useRouter()
-    
+
     // useCustomRouter();
     // const { toggleColorMode } = useContext(ColorModeContext);
     // const contextManager = useContext(UserContext);
@@ -81,6 +82,19 @@ function NavBar() {
     // };
 
     const appTheme = useTheme();
+    const token = localStorage.getItem("token") 
+    const { logout, isTokenExpired } = useAuth();
+
+    useEffect(() => {
+        if(!token) {
+            router.push("/login")
+        }
+        if(isTokenExpired()) logout()
+    }, [router, token])
+
+    if (!token) {
+        return null;
+    }
 
     return (
         <>
@@ -88,7 +102,7 @@ function NavBar() {
                 position="fixed"
                 sx={{
                     backgroundColor: "#5c6bc0",
-                    
+
                     zIndex: appTheme.zIndex.drawer + 1,
                     transition: appTheme.transitions.create(
                         ["width", "margin"],
@@ -188,8 +202,8 @@ function NavBar() {
                                 : "Dark"
                         }
                     >
-                        <IconButton onClick={() => alert('opppss')}>     
-                        {/* toggleColorMode}> */}
+                        <IconButton onClick={() => alert('opppss')}>
+                            {/* toggleColorMode}> */}
                             {appTheme.palette.mode === "dark" ? (
                                 <Brightness7TwoToneIcon />
                             ) : (
@@ -219,7 +233,7 @@ function NavBar() {
                     <Tooltip title="Sign Out">
                         <IconButton
                             color="inherit"
-                            onClick={() => alert('IHUUUUL')}    //handleOnLogoutClick}
+                            onClick={logout}    //handleOnLogoutClick}
                         >
                             <ExitToAppTwoToneIcon />
                         </IconButton>

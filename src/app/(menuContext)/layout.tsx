@@ -1,19 +1,21 @@
+"use client"
+import NavBar from "@/components/navBar/NabBar";
 import { Box } from "@mui/material";
-import NavBar from "../../components/navBar/NabBar";
+import { AuthProvider } from "../(authContext)/authContext";
 
 export default function menuRootContext({
     children,
-  }: Readonly<{
+}: Readonly<{
     children: React.ReactNode;
-  }>) {
+}>) {
 
     return (
         <Box
             sx={{
                 pt: "68px",
             }}
-        >
-            <NavBar/>
+        > 
+            <NavBar />
             {children}
         </Box>
     )
