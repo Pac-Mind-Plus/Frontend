@@ -78,6 +78,11 @@ export default function RegisterPage() {
     }
 
     return (
+        <body
+            style={{
+                backgroundColor: "white",
+            }}
+        >
         <Grid
             container
             component="main"
@@ -243,7 +248,7 @@ export default function RegisterPage() {
                     />
                 </Icon>
             </Grid>
-
         </Grid>
+        </body>
     )
 }
