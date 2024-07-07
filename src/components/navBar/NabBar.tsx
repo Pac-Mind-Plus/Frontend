@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
     AppBar,
@@ -21,6 +21,7 @@ import {
 } from "@mui/icons-material";
 import CustomLink from "../shared/navigation/CustomLink";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/(authContext)/authContext";
 
 const ImgIcon = styled("img")(() => ({
     height: "95%",
@@ -38,6 +39,19 @@ function NavBar() {
     };
 
     const appTheme = useTheme();
+    const token = localStorage.getItem("token") 
+    const { logout, isTokenExpired } = useAuth();
+
+    useEffect(() => {
+        if(!token) {
+            router.push("/login")
+        }
+        if(isTokenExpired()) logout()
+    }, [router, token])
+
+    if (!token) {
+        return null;
+    }
 
     return (
         <>
@@ -115,8 +129,8 @@ function NavBar() {
                                 : "Dark"
                         }
                     >
-                        <IconButton onClick={() => alert('opppss')}>     
-                        {/* toggleColorMode}> */}
+                        <IconButton onClick={() => alert('opppss')}>
+                            {/* toggleColorMode}> */}
                             {appTheme.palette.mode === "dark" ? (
                                 <Brightness7TwoToneIcon />
                             ) : (
@@ -138,7 +152,7 @@ function NavBar() {
                     <Tooltip title="Sign Out">
                         <IconButton
                             color="inherit"
-                            onClick={() => alert('IHUUUUL')}    //handleOnLogoutClick}
+                            onClick={logout}    //handleOnLogoutClick}
                         >
                             <ExitToAppTwoToneIcon />
                         </IconButton>

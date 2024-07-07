@@ -5,6 +5,11 @@ import {
     AccountCircle as MuiPersonsCircleIcon,
 } from '@mui/icons-material';
 import PasswordInputComp from "@/components/shared/PasswordInput";
+import { useState } from "react";
+import axios from "axios";
+import Link from "next/link";
+import { useAuth } from "../authContext";
+import { useRouter } from "next/navigation";
 
 const ImgIcon = styled("img")(() => ({
     height: "100%",
@@ -12,6 +17,32 @@ const ImgIcon = styled("img")(() => ({
 
 export default function LoginPage() { //TODO: Colocar os componentes em comum em um leyout para aplicar o efeito de animate
     const appTheme = useThemeContext();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState("");
+    const { login } = useAuth();
+    const router = useRouter()
+
+    const handleLogin = async () => {
+        const data = new URLSearchParams();
+        data.append("grant_type", "password");
+        data.append("client_id", "login-app");
+        data.append("client_secret", "abASa668rvZwAITiGFwx5tq6xnK1MNm8");
+        data.append("username", email);
+        data.append("password", password);
+        try{
+            const response = await axios.post("http://localhost:8081/realms/MindPlus/protocol/openid-connect/token", data, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            });
+
+            login(response.data.access_token);
+            router.push("/")
+        } catch (error) {
+            setError("Usuário ou senha inválidos")
+        }
+    };
 
     return (
         <body
@@ -29,12 +60,12 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                 }}
             >
                 <CssBaseline />
-                    <Grid
-                        xs={12}
-                        sm={8}
-                        md={5}
-                        component={'div'}
-                    >
+                <Grid
+                    xs={12}
+                    sm={8}
+                    md={5}
+                    component={'div'}
+                >
                     <Icon
                         sx={{
                             fontSize: 300,
@@ -92,10 +123,12 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                         >
                             
                             <Typography variant="h2" style={{marginBottom: '5%'}}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '300%', marginBottom: '1%' }}/>SIGN UP</Typography>
-                            <Typography variant="h6" style={{marginBottom: '1%'}}>Email</Typography>
+                            <Typography variant="h6" style={{marginBottom: '1%'}}>Username</Typography>
                             <TextField //TODO: Adicionar configuração como variante depois
-                                label="Your best email"
+                                label="Your username"
                                 type="outlined"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 sx={{
                                     width: '100%',
                                     marginBottom: '3%',
@@ -112,7 +145,10 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                                     backgroundColor: 'rgba(0,0,0,0.7)',
                                     borderRadius: '8px',
                                 }}
+                                value={password}
+                                onChange={(e: any) => setPassword(e.target.value)}
                             />
+                            {error && <p style={{color: "red"}}>{error}</p>}
                             <Button
                                 sx={{
                                     width: '100%',
@@ -126,7 +162,7 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                                         background: 'linear-gradient(45deg, rgba(18,34,0,0.7) 0%, rgba(6,200,0,0.7) 48%, rgba(0,50,29,0.7) 100%)',
                                     }
                                 }}
-                                onClick={() => alert('LOGADOOOOOO')}
+                                onClick={handleLogin}
                             >
                                 Entrar
                             </Button>
@@ -135,7 +171,7 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                                     marginTop: '3%',
                                     fontSize: 'bold'
                                 }}
-                            ><a href="/register">I Don't have an account</a></Typography>
+                            ><Link href="/register">I Don't have an account</Link></Typography>
                         </div>                
                 </Paper>
             </Grid>

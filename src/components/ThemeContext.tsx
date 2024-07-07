@@ -68,7 +68,7 @@ const ThemeContext = createContext<ThemeType>(theme);
 
 export const useThemeContext = () => useContext(ThemeContext);
 
-export const ThemeProviderWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProviderWrapper = ({ children }: {children: React.ReactNode}) => {
   return (
     <ThemeProvider theme={theme}>
       <ThemeContext.Provider value={theme}>

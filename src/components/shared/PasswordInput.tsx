@@ -8,9 +8,11 @@ import { useState } from "react";
 type PropsType = {
     label: string,
     style: any,
+    value?: any,
+    onChange?: any,
 };
 
-export default function PasswordInputComp({label, style}: PropsType) {
+export default function PasswordInputComp({label, style, value, onChange}: PropsType) {
 
     const [showText, setShowText] = useState(false);
 
@@ -23,6 +25,8 @@ export default function PasswordInputComp({label, style}: PropsType) {
                             label={label}
                             type={showText ? "" : "password"}
                             sx={style}
+                            value={value}
+                            onChange={onChange}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">

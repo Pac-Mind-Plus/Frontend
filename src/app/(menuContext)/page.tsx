@@ -1,8 +1,8 @@
 "use client"
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material"
-import { useThemeContext } from "../../components/ThemeContext";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react"
 import { useState } from "react";
+import { useThemeContext } from "@/components/ThemeContext";
 
 export default function Home() {
   const appTheme = useThemeContext();
