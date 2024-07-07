@@ -142,6 +142,40 @@ export default function Home() {
             variant="middle"
             orientation="vertical"
           />
+          <Grid
+            container
+            sx={{
+              margin: 2,
+              display: "flex",
+              alignContent: "center",
+              justifyContent: "center",
+              width: "60%",
+            }}
+          >
+            <Typography variant="h4">Bem vindo ao Mind Plus</Typography>
+            <Typography>Para cadastrar um novo evento basta selecionar o tempo no diario ao lado</Typography>
+            <Paper
+              variant="outlined"
+              sx={{
+                margin: 2,
+                border: "1px solid white",
+                background: 'linear-gradient(45deg, rgba(2,0,36,0.4) 0%, rgba(0,126,200,1) 48%, rgba(0,212,255,1) 100%)',
+                height: "85%",
+              }}
+            >
+              <Grid
+                container
+                sx={{
+                  display: "flex",
+                  alignContent: "center",
+                  justifyContent: "center",
+                  height: "100%"
+                }}
+              >
+                <Typography variant="h3">Dashboard em construção...</Typography>
+              </Grid>
+            </Paper>
+          </Grid>
         </Paper>
     </Grid>
   );
