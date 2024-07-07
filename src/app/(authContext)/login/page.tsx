@@ -118,9 +118,9 @@ export default function LoginPage() { //TODO: Colocar os componentes em comum em
                     >
                         
                         <Typography variant="h2" style={{marginBottom: '5%'}}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '300%', marginBottom: '1%' }}/>SIGN UP</Typography>
-                        <Typography variant="h6" style={{marginBottom: '1%'}}>Email</Typography>
+                        <Typography variant="h6" style={{marginBottom: '1%'}}>Username</Typography>
                         <TextField //TODO: Adicionar configuração como variante depois
-                            label="Your best email"
+                            label="Your username"
                             type="outlined"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
