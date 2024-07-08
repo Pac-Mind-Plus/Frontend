@@ -1,6 +1,6 @@
 "use client"
 import { useThemeContext } from "@/components/ThemeContext";
-import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled } from "@mui/material";
+import { Button, CssBaseline, Grid, Icon, Box, Paper, TextField, Typography, styled, FormControlLabel, Checkbox, Link} from "@mui/material";
 import { AccountCircle as MuiPersonsCircleIcon } from '@mui/icons-material';
 import { useRouter } from "next/navigation";
 import PasswordInputComp from "@/components/shared/PasswordInput";
@@ -21,9 +21,16 @@ export default function RegisterPage() {
     const [lastName, setLastName] = useState('');
     const [error, setError] = useState("");
     const router = useRouter();
+    const [terms, setTerms] = useState(false);
     const { getAdminToken } = useAuth()
 
     const handleRegister = async () => {
+        
+        if (!terms) {
+            setError("Please, accept the terms");
+            return;
+        }
+
         if (password != confirmPassword) {
             setError("Passwords do not match");
             return;
@@ -130,63 +137,63 @@ export default function RegisterPage() {
                     }}
                 >
 
-                    <Typography variant="h2" style={{ marginBottom: '5%' }}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '300%', marginBottom: '1%' }} />REGISTER</Typography>
-                    <Typography variant="h6" style={{ marginBottom: '1%' }}>Name</Typography>
+                    <Typography variant="h2" style={{ marginBottom: '1%' }}><MuiPersonsCircleIcon sx={{ mx: 0.5, fontSize: '150%'}} />REGISTER</Typography>
+                    <Typography variant="h6" style={{ marginBottom: '1%', fontSize:"80%" }}>Name</Typography>
                     <TextField //TODO: Adicionar configuração como variante depois
                         label="Your Name"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         sx={{
                             width: '100%',
-                            marginBottom: '3%',
+                            marginBottom: '1%',
                             backgroundColor: 'rgba(0,0,0,0.7)',
                             borderRadius: '8px',
                         }}
                     />
-                    <Typography variant="h6" style={{ marginBottom: '1%' }}>Last Name</Typography>
+                    <Typography variant="h6" style={{ marginBottom: '1%', fontSize:"80%" }}>Last Name</Typography>
                     <TextField //TODO: Adicionar configuração como variante depois
                         label="Your Last Name"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         sx={{
                             width: '100%',
-                            marginBottom: '3%',
+                            marginBottom: '1%',
                             backgroundColor: 'rgba(0,0,0,0.7)',
                             borderRadius: '8px',
                         }}
                     />
-                    <Typography variant="h6" style={{ marginBottom: '1%' }}>Username</Typography>
+                    <Typography variant="h6" style={{ marginBottom: '1%', fontSize:"80%" }}>Username</Typography>
                     <TextField //TODO: Adicionar configuração como variante depois
                         label="Your best username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         sx={{
                             width: '100%',
-                            marginBottom: '3%',
+                            marginBottom: '1%',
                             backgroundColor: 'rgba(0,0,0,0.7)',
                             borderRadius: '8px',
                         }}
                     />
-                    <Typography variant="h6" style={{ marginBottom: '1%' }}>Password</Typography>
+                    <Typography variant="h6" style={{ marginBottom: '1%', fontSize:"80%" }}>Password</Typography>
                     <PasswordInputComp
                         label="That better password"
                         value={password}
                         onChange={(e: any) => setPassword(e.target.value)}
                         style={{
                             width: '100%',
-                            marginBottom: '3%',
+                            marginBottom: '1%',
                             backgroundColor: 'rgba(0,0,0,0.7)',
                             borderRadius: '8px',
                         }}
                     />
-                    <Typography variant="h6" style={{ marginBottom: '1%' }}>Repeat Password</Typography>
+                    <Typography variant="h6" style={{ marginBottom: '1%', fontSize:"80%" }}>Repeat Password</Typography>
                     <PasswordInputComp
                         label="Repeat that better password"
                         value={confirmPassword}
                         onChange={(e: any) => setConfirmPassword(e.target.value)}
                         style={{
                             width: '100%',
-                            marginBottom: '3%',
+                            marginBottom: '1%',
                             backgroundColor: 'rgba(0,0,0,0.7)',
                             borderRadius: '8px',
                         }}
@@ -215,6 +222,9 @@ export default function RegisterPage() {
                         >
                             Register
                         </Button>
+                        <FormControlLabel label={<Link href="terms">Terms of Privacy</Link>} control={
+                            <Checkbox value={terms} onChange={() => {setTerms(!terms)}} sx={{color:"white"}} />}>
+                        </FormControlLabel>
                         <Typography
                             sx={{
                                 marginTop: '3%',
