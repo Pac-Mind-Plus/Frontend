@@ -22,6 +22,7 @@ import {
 import CustomLink from "../shared/navigation/CustomLink";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/(authContext)/authContext";
+import { jwtDecode } from "jwt-decode";
 
 const ImgIcon = styled("img")(() => ({
     height: "95%",
@@ -37,17 +38,19 @@ function NavBar() {
     const handleOnLogoIconClick = () => {
         router.push("/");
     };
-
     const appTheme = useTheme();
     const token = localStorage.getItem("token") 
     const { logout, isTokenExpired } = useAuth();
-
+    let info:any;
+    if(!!token) {
+        info = jwtDecode(token);
+    }
     useEffect(() => {
         if(!token) {
             router.push("/login")
         }
         if(isTokenExpired()) logout()
-    }, [router, token])
+    }, [router, token, ])
 
     if (!token) {
         return null;
@@ -101,7 +104,7 @@ function NavBar() {
                     </Tooltip>
                     <DivFlexGrow />
                     <Tooltip
-                        title={"Otavio Murilo Rau"}
+                        title={info.name}
                     >
                         <CustomLink
                             // href={getPersonPath()}
@@ -116,7 +119,7 @@ function NavBar() {
                                 }}
                                 id="hello_page"
                             >
-                                Hello, {"Otavio Murilo Rau"}
+                                Hello, {info.name}
                                 {/* {!!mounted &&
                                     contextManager.getDisplayName()} */}
                             </Typography>
@@ -129,7 +132,10 @@ function NavBar() {
                                 : "Dark"
                         }
                     >
-                        <IconButton onClick={() => alert('opppss')}>
+                        <IconButton onClick={() => {
+                            console.log(appTheme.palette.mode);
+                            appTheme.palette.mode === "light" ? appTheme.palette.mode = "dark" : appTheme.palette.mode = "light"
+                            }}>
                             {/* toggleColorMode}> */}
                             {appTheme.palette.mode === "dark" ? (
                                 <Brightness7TwoToneIcon />
