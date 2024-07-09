@@ -118,7 +118,7 @@ export default function RegisterPage() {
                 sx={{
                     position: 'absolute',
                     margin: '0 0 0 8vw',
-                    height: '90vh',
+                    height: '95vh',
                     width: '45vw',
                     display: "flex",
                     alignItems: "center",
