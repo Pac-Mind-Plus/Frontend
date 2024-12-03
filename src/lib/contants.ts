@@ -1,0 +1,1 @@
+export const LOCAL_DATABASE_URL = "http://localhost:8080"

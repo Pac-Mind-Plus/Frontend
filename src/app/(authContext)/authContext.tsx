@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 
 interface AuthContextType {
+    userId: string | undefined;
     token: string | null;
     login: (newToken: string) => void;
     logout: () => void;
@@ -11,15 +12,17 @@ interface AuthContextType {
     getAdminToken: () => Promise<string|null>
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const initialToken = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     const [token, setToken] = useState<string | null>(initialToken);
+    const [userId, setUserId] = useState<string>()
 
     const login = (newToken : string) => {
         localStorage.setItem('token', newToken);
         setToken(newToken);
+        setUserId(jwtDecode(newToken).sub)
     };
 
     const logout = () => {
@@ -55,7 +58,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                     },
                 }
             );
-
             return response.data.access_token;
         } catch (error) {
             console.error('Error fetching admin token:', error);
@@ -63,7 +65,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ token, login, logout, isTokenExpired, getAdminToken }}>
+        <AuthContext.Provider value={{ userId, token, login, logout, isTokenExpired, getAdminToken }}>
             {children}
         </AuthContext.Provider>
     );

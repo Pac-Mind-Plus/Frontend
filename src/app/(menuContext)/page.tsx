@@ -1,12 +1,16 @@
 "use client"
 import { Box, Divider, Grid, Paper, Typography } from "@mui/material"
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react"
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useThemeContext } from "@/components/ThemeContext";
+import { AuthContext } from "../(authContext)/authContext";
+import { getHistoric, HistoricResultType } from "../../lib/requests/backend/historicRequests";
 
 export default function Home() {
   const appTheme = useThemeContext();
   const [calendar, setCalendar] = useState<DayPilot.Calendar>();
+
+  const auth = useContext(AuthContext)
 
   const initialConfig: DayPilot.CalendarConfig = {
     viewType: "Day",
@@ -85,9 +89,34 @@ export default function Home() {
             }
         }
     ]
-});
+  });
 
   const [config, setConfig] = useState(initialConfig);
+
+  useEffect(() => {
+    (async () => {
+      const getHistoricResult = await getHistoric(
+        auth?.userId as string,
+        auth?.token as string
+      );
+
+      // console.log(auth?.token) // Apenas para debugar com backend
+
+      if (getHistoricResult) {
+        getHistoricResult.forEach((histEvent: HistoricResultType) => {
+            calendar?.events.add({
+              start: histEvent.startDate,
+              end: histEvent.endDate,
+              id: DayPilot.guid(),
+              text: histEvent.reward,
+              tags: {
+                  participants: histEvent.id,
+              }
+          })
+        });
+      }
+    })().catch(console.error);
+  }, [])
 
   return (
     <Grid  
